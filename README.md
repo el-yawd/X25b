@@ -1,5 +1,7 @@
 # Compilador X25b - Avaliação Parcial 2
 
+Feito por: Tamiris Oliveira e Diego Reis
+
 ## Descrição
 
 Compilador front-end para a linguagem X25b, uma linguagem de algoritmos hipotética utilizada para demonstração de conceitos de compiladores.
