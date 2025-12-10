@@ -5,7 +5,7 @@
 
 # Compilador e flags
 CC = gcc
-CFLAGS = -Wall -Wextra -g -std=c99
+CFLAGS = -Wall -Wextra -g -std=c99 -D_POSIX_C_SOURCE=200809L
 LDFLAGS = -lfl
 
 # Ferramentas
@@ -109,4 +109,3 @@ help:
 	@echo ""
 
 .PHONY: all clean distclean test test-fatorial help
-

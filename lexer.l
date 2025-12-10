@@ -5,6 +5,7 @@
  */
 
 #define _GNU_SOURCE
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -88,7 +89,7 @@ CADEIA_DUPLA \"[^\"\n]*\"
 "]"             { atualiza_posicao(); return ']'; }
 ","             { atualiza_posicao(); return ','; }
 
-"{"[^}]*"}"     { 
+"{"[^}]*"}"     {
                   /* Comentário - ignora e conta linhas */
                   char *p = yytext;
                   while (*p) {
@@ -102,7 +103,7 @@ CADEIA_DUPLA \"[^\"\n]*\"
                   }
                 }
 
-{INTEIRO_CONST} { 
+{INTEIRO_CONST} {
                   atualiza_posicao();
                   yylval.ival = atoi(yytext);
                   return CONST_INT;
@@ -146,7 +147,7 @@ CADEIA_DUPLA \"[^\"\n]*\"
 
 {NOVA_LINHA}    { linha++; coluna = 1; }
 
-.               { 
+.               {
                   char msg[100];
                   sprintf(msg, "Caractere invalido: '%c'", yytext[0]);
                   erro_lexico(msg);
@@ -162,4 +163,3 @@ void atualiza_posicao(void) {
 void erro_lexico(const char *msg) {
     fprintf(stderr, "ERRO LEXICO na linha %d, coluna %d: %s\n", linha, coluna, msg);
 }
-
